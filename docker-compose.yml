@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  database:
+    image: mysql
+    container_name: zifra-sports-database
+    environment:
+      MYSQL_DATABASE: zifrasports
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./src/database/database-docker:/var/lib/postgresql/data

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/cadastrar-produto.css">
+    <title>Cadastrar novo produto</title>
+</head>
+<body>
+
+    <div th:include="/fragments/header.html"></div>
+
+    <main>
+
+        <h1 class="title">Formulário de cadastro de produto</h1>
+
+        <div class="form-container">
+            <form th:object="${productEntity}" action="/cadastrar-produto" method="POST" enctype="multipart/form-data">
+                
+                <input 
+                    class="input-form" 
+                    type="text"    
+                    placeholder="Nome do produto"
+                    th:field="*{name}"
+                />
+
+                <br />
+                
+                <textarea
+                    class="input-large-form" 
+                    type="text"    
+                    placeholder="Descrição do produto"
+                    resizable="f"
+                    th:field="*{description}"
+                ></textarea>
+
+                <br />
+                
+                <input 
+                    class="input-form" 
+                    type="number"    
+                    placeholder="Preço do produto"
+                    th:field="*{price}"
+                />
+                
+                <br />
+
+                <br />
+
+                <select class="input-form" th:field="*{category}">
+                    <option th:each="category : ${categories}" th:text="${category.name}" th:value="${category.name}"></option>
+                </select>
+
+                <br />
+
+                <input 
+                    class="input-form" 
+                    type="text"    
+                    placeholder="link do produto"
+                    th:field="*{link}"
+                />
+
+                <br />
+
+                <input type="file" name="file" />
+
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
